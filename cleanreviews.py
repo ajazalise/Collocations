@@ -39,6 +39,7 @@ def clean_comments(text):
     #remove punctuations
     regex = re.compile('[' + re.escape(string.punctuation) + '\\r\\t\\n]')
     nopunct = regex.sub(" ", str(text))
+    nopunct = unicode(nopunct)
     #use spacy to lemmatize comments
     doc = nlp(nopunct, disable=['parser','ner'])
     lemma = [token.lemma_ for token in doc]
